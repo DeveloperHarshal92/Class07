@@ -27,18 +27,28 @@ html {
     sans-serif;
 }
 
-.notes{
+.notes {
   padding: 2rem;
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
+}
 
+.note {
+  background-color: #494949;
+  padding: 1rem;
+  border-radius: 0.7rem;
+  max-width: 20rem;
+  color: white;
+  cursor: pointer;
 
-  .note{
-    background-color: #494949;
-    padding: 1rem;
-    border-radius: 0.7rem;
-    max-width: 20rem;
-    color: white;
+  h1{
+    padding-bottom: 0.5rem;
   }
+}
+
+.note:hover {
+  scale: 1.1;
+  transition: all 0.2s linear;
+  background-color: #373737;
 }
