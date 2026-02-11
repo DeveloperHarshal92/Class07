@@ -22,7 +22,7 @@ const App = () => {
   ]);
 
   function fetchNotes() {
-    axios.get("https://notes-app-full-stack-705m.onrender.com/api/notes").then((res) => {
+    axios.get("https://full-stack-notes-app-9bwg.onrender.comapi/notes").then((res) => {
       setNotes(res.data.notes);
     });
   }
@@ -37,7 +37,7 @@ const App = () => {
     const { title, description } = e.target.elements;
 
     axios
-      .post("https://notes-app-full-stack-705m.onrender.com/api/notes", {
+      .post("https://full-stack-notes-app-9bwg.onrender.com/api/notes", {
         title: title.value,
         description: description.value,
       })
@@ -48,7 +48,7 @@ const App = () => {
   }
 
   function handleDelete(noteId) {
-    axios.delete("https://notes-app-full-stack-705m.onrender.com/api/notes/" + noteId).then((res) => {
+    axios.delete("https://full-stack-notes-app-9bwg.onrender.com/api/notes/" + noteId).then((res) => {
       console.log(res.data);
       fetchNotes();
     });
@@ -71,7 +71,7 @@ const App = () => {
   }
 
   function handleSaveUpdate() {
-    axios.patch("https://notes-app-full-stack-705m.onrender.com/api/notes/" + currentNoteid,editData).then((res)=>{
+    axios.patch("https://full-stack-notes-app-9bwg.onrender.com/api/notes/" + currentNoteid,editData).then((res)=>{
       console.log(res.data)
       setIsModelOpen(false)
       fetchNotes()
