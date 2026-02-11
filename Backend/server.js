@@ -5,11 +5,7 @@ const connectToDb = require("./src/config/database");
 const PORT = process.env.PORT || 3000;
 
 connectToDb()
-  .then(() => {
-    app.listen(PORT, () => {
-      console.log(`Server is running on port ${PORT}`);
-    });
-  })
-  .catch((err) => {
-    console.error("Database connection failed:", err);
-  });
+  
+app.listen(3000,()=>{
+    console.log("The server is running on port 3000")
+})
