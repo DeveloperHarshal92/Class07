@@ -22,7 +22,7 @@ const App = () => {
   ]);
 
   function fetchNotes() {
-    axios.get("https://full-stack-notes-app-9bwg.onrender.comapi/notes").then((res) => {
+    axios.get("https://full-stack-notes-app-9bwg.onrender.com/api/notes").then((res) => {
       setNotes(res.data.notes);
     });
   }
