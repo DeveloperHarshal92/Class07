@@ -1,123 +1,144 @@
+/* =========================
+   GLOBAL RESET
+========================= */
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-html,
-body,
-#root {
+html, body, #root {
   height: 100%;
   width: 100%;
-}
-
-html {
-  background: #181818;
-  font-family:
-    system-ui,
-    -apple-system,
-    BlinkMacSystemFont,
-    "Segoe UI",
-    Roboto,
-    Oxygen,
-    Ubuntu,
-    Cantarell,
-    "Open Sans",
-    "Helvetica Neue",
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
     sans-serif;
-  color: #f1f1f1;
+  color: white;
 }
 
-/* FORM */
+/* =========================
+   ANIMATED GRADIENT BACKGROUND
+========================= */
 
-form {
+body {
+  background: linear-gradient(135deg, #0f0f1b, #1f1f3a, #6c63ff);
+  background-size: 200% 200%;
+  animation: gradientShift 10s ease infinite;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* =========================
+   HEADER / FORM SECTION
+========================= */
+
+.note-create-form {
+  backdrop-filter: blur(12px);
+  background: rgba(0, 0, 0, 0.3);
   padding: 2rem 3rem;
   display: flex;
+  align-items: center;
   gap: 1rem;
-  background: #202020;
-  border-bottom: 1px solid #2e2e2e;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  flex-wrap: wrap;
 }
 
-form h1 {
+.note-create-form h1 {
   font-size: 1.8rem;
   font-weight: 600;
   letter-spacing: 1px;
-  background: linear-gradient(90deg, #6c63ff, #9b5cff);
+  background: linear-gradient(90deg, #ffffff, #d1d5ff);
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  margin-right: 2rem;
-  cursor: default;
-  transition: 0.3s ease;
+  flex: 1 1 100%;
 }
-form input {
-  background: #2a2a2a;
-  color: #fff;
+
+
+.note-create-form input {
   padding: 0.6rem 0.8rem;
   border-radius: 8px;
-  border: 1px solid #333;
-  outline: none;
-  transition: all 0.2s ease;
-}
-
-form input:focus {
-  border-color: #6c63ff;
-  box-shadow: 0 0 0 2px rgba(108, 99, 255, 0.3);
-}
-
-form button {
-  background: #6c63ff;
-  color: white;
   border: none;
+  outline: none;
+  background: rgba(255,255,255,0.1);
+  color: white;
+  transition: 0.3s ease;
+  flex: 1 1 200px;
+  min-width: 180px;
+}
+
+.note-create-form input:focus {
+  background: rgba(255,255,255,0.2);
+}
+
+.note-create-form button {
   padding: 0.6rem 1rem;
   border-radius: 8px;
+  border: none;
   cursor: pointer;
-  transition: all 0.2s ease;
-  font-weight: 500;
+  background: #ffffff;
+  color: #1f1f3a;
+  font-weight: 600;
+  transition: 0.3s ease;
 }
 
-form button:hover {
-  background: #574fd6;
-  transform: translateY(-2px);
+.note-create-form button:hover {
+  transform: translateY(-3px);
+  background: #d1d5ff;
 }
+
+/* =========================
+   NOTES GRID
+========================= */
 
 .notes {
   padding: 2rem;
   display: flex;
-  gap: 1.5rem;
   flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
 }
 
+/* =========================
+   NOTE CARD
+========================= */
+
 .note {
-  background: #242424;
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
   padding: 1.2rem;
-  width: 20rem;
-  border-radius: 14px;
-  color: #eaeaea;
-  transition: all 0.25s ease;
-  border: 1px solid #2f2f2f;
+  width: 300px;
+  transition: 0.3s ease;
+  border: 1px solid rgba(255,255,255,0.1);
 }
 
 .note:hover {
   transform: translateY(-6px);
-  background: #2d2d2d;
-  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.5);
+  background: rgba(255,255,255,0.12);
 }
 
 .note h1 {
   font-size: 1.2rem;
   margin-bottom: 0.6rem;
-  font-weight: 500;
 }
 
 .note p {
   font-size: 0.95rem;
-  color: #cfcfcf;
+  opacity: 0.85;
 }
 
+/* =========================
+   CARD BUTTONS
+========================= */
+
 .note .btn {
-  margin-top: 1.2rem;
+  margin-top: 1rem;
   display: flex;
-  justify-content: space-between;
   gap: 1rem;
 }
 
@@ -128,30 +149,30 @@ form button:hover {
   border: none;
   cursor: pointer;
   font-weight: 500;
-  transition: all 0.2s ease;
-}
-
-.note .btn button:hover {
-  transform: translateY(-2px);
+  transition: 0.3s ease;
 }
 
 .update {
-  background: #f4b400;
+  background: #ffd54f;
   color: black;
 }
 
 .update:hover {
-  background: #e0a800;
+  background: #ffca28;
 }
 
 .delete {
-  background: #e63946;
+  background: #ff5252;
   color: white;
 }
 
 .delete:hover {
-  background: #c72c3a;
+  background: #ff1744;
 }
+
+/* =========================
+   MODAL
+========================= */
 
 .model-layer {
   position: fixed;
@@ -161,122 +182,75 @@ form button:hover {
   display: flex;
   justify-content: center;
   align-items: center;
-  animation: fadeIn 0.2s ease-in-out;
 }
 
-.model-layer .model {
-  background: #222;
+.model {
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(15px);
   padding: 2rem;
   border-radius: 16px;
   width: 350px;
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
-  border: 1px solid #333;
-  animation: scaleIn 0.2s ease-in-out;
+  border: 1px solid rgba(255,255,255,0.2);
 }
 
-.model-layer .model h2 {
+.model h2 {
   margin-bottom: 1rem;
-  font-weight: 500;
 }
 
-.model-layer .model input {
+.model input {
   width: 100%;
+  padding: 0.6rem;
   margin-bottom: 1rem;
-  padding: 0.7rem;
   border-radius: 8px;
-  border: 1px solid #333;
-  background: #1a1a1a;
-  color: white;
+  border: none;
   outline: none;
-  transition: all 0.2s ease;
+  background: rgba(255,255,255,0.15);
+  color: white;
 }
 
-.model-layer .model input:focus {
-  border-color: #6c63ff;
-  box-shadow: 0 0 0 2px rgba(108, 99, 255, 0.3);
+.model input:focus {
+  background: rgba(255,255,255,0.25);
 }
 
-.model-layer .model-btn {
+.model-btn {
   display: flex;
-  justify-content: space-between;
   gap: 1rem;
 }
 
-.model-layer .model-btn button {
+.model-btn button {
   flex: 1;
   padding: 0.6rem;
   border-radius: 8px;
   border: none;
   cursor: pointer;
   font-weight: 500;
-  transition: all 0.2s ease;
+  transition: 0.3s ease;
 }
 
-.model-layer .model-btn button:first-child {
+.model-btn button:first-child {
   background: #6c63ff;
   color: white;
 }
 
-.model-layer .model-btn button:first-child:hover {
+.model-btn button:first-child:hover {
   background: #574fd6;
-  transform: translateY(-2px);
 }
 
-.model-layer .model-btn button:last-child {
-  background: #333;
-  color: #ddd;
-}
-
-.model-layer .model-btn button:last-child:hover {
-  background: #444;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes scaleIn {
-  from {
-    transform: scale(0.9);
-    opacity: 0;
-  }
-  to {
-    transform: scale(1);
-    opacity: 1;
-  }
+.model-btn button:last-child {
+  background: rgba(255,255,255,0.2);
+  color: white;
 }
 
 @media (max-width: 992px) {
 
-  form {
-    flex-wrap: wrap;
+  .note-create-form {
     justify-content: center;
-    gap: 1rem;
-    padding: 1.5rem;
-
-    h1 {
-      width: 100%;
-      text-align: center;
-      margin-right: 0;
-      margin-bottom: 1rem;
-    }
-
-    input {
-      flex: 1 1 45%;
-    }
-
-    button {
-      flex: 1 1 100%;
-    }
+    text-align: center;
   }
 
-  .notes {
-    justify-content: center;
+  .note-create-form h1 {
+    flex: 1 1 100%;
+    margin-bottom: 1rem;
   }
 
   .note {
@@ -285,48 +259,30 @@ form button:hover {
   }
 }
 
+
 @media (max-width: 576px) {
 
-  form {
-    flex-direction: column;
-    align-items: stretch;
-    padding: 1.2rem;
+  .note-create-form {
+  flex-direction: column;
+  align-items: stretch;
+  padding: 1.5rem;
+}
 
-    h1 {
-      font-size: 1.5rem;
-    }
+.note-create-form input,
+.note-create-form button {
+  width: 100%;
+}
 
-    input {
-      width: 100%;
-    }
-
-    button {
-      width: 100%;
-    }
-  }
-
-  .notes {
-    padding: 1rem;
-    gap: 1rem;
-  }
-
-  .note {
-    width: 100%;
-    padding: 1rem;
+  .note-create-form h1 {
+    text-align: center;
+    margin-right: 0;
   }
 
   .note .btn {
     flex-direction: column;
-    gap: 0.6rem;
-
-    button {
-      width: 100%;
-    }
   }
 
-  .model-layer .model {
+  .model {
     width: 90%;
-    padding: 1.5rem;
   }
 }
-

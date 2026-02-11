@@ -1,10 +1,12 @@
 const express = require("express");
 const noteModel = require("./models/note.model");
-const cors = require("cors")
+const cors = require("cors");
+const path = require("path")
 
 const app = express();
+app.use(cors());
 app.use(express.json());
-app.use(cors())
+app.use(express.static("./public"))
 
 // Post : /api/notes => Create new note and save data in mongodb
 app.post("/api/notes", async (req, res) => {
@@ -44,12 +46,21 @@ app.delete("/api/notes/:id", async (req, res) => {
 // Patch : /api/notes => Update the description of the note by id
 app.patch("/api/notes/:id", async (req, res) => {
   const { title, description } = req.body;
-  const updateNote = await noteModel.findByIdAndUpdate(req.params.id, { title , description },{new : true});
+  const updateNote = await noteModel.findByIdAndUpdate(
+    req.params.id,
+    { title, description },
+    { new: true },
+  );
 
   res.status(200).json({
     message: "Notes modified successfully",
-    updateNote
+    updateNote,
   });
 });
+
+// Wild Card handling
+app.use("*name",(req,res)=>{
+  res.sendFile(path.join(__dirname,"..","/public/index.html"))
+})
 
 module.exports = app;
