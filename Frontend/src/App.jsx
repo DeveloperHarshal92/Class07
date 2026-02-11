@@ -80,16 +80,18 @@ const App = () => {
 
   return (
     <>
+    
       <form className="note-create-form" onSubmit={handleSubmit}>
+        <h1>Notes App</h1>
         <input name="title" type="text" placeholder="Enter title" />
         <input name="description" type="text" placeholder="Enter description" />
         <button>Create Note</button>
       </form>
 
       <div className="notes">
-        {notes.map((note) => {
+        {notes.map((note,idx) => {
           return (
-            <div className="note" key={note._id}>
+            <div className="note" key={idx}>
               <h1>{note.title}</h1>
               <p>{note.description}</p>
               <div className="btn">

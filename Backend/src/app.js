@@ -43,11 +43,12 @@ app.delete("/api/notes/:id", async (req, res) => {
 
 // Patch : /api/notes => Update the description of the note by id
 app.patch("/api/notes/:id", async (req, res) => {
-  const { description } = req.body;
-  await noteModel.findByIdAndUpdate(req.params.id, { description });
+  const { title, description } = req.body;
+  const updateNote = await noteModel.findByIdAndUpdate(req.params.id, { title , description },{new : true});
 
   res.status(200).json({
     message: "Notes modified successfully",
+    updateNote
   });
 });
 
